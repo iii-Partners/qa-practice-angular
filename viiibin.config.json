@@ -1,0 +1,8 @@
+{
+  "$schema": "https://priiism.ai/schemas/viiibin.config.v1.json",
+  "framework": "angular",
+  "target": "cloudflare-pages",
+  "devCommand": "npm run dev",
+  "buildCommand": "npm run build",
+  "outputDir": "dist/qa-practice-angular/browser"
+}
