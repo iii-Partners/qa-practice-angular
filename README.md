@@ -42,6 +42,13 @@ npm run build  # → dist/qa-practice-angular/browser/
 - viiibin's prep script appends `--host 0.0.0.0 --port 3000` to
   `npm run dev` for non-Vite, non-Next frameworks. Angular CLI tolerates the
   duplicate flags; the last value wins.
+- Angular 21's `@angular/build:dev-server` enforces a host allowlist (CVE
+  parity with Vite 5.4+). viiibin's preview proxy hits the sandbox via a
+  random subdomain (`3000-<sandbox-id>.e2b.app`), which Angular blocks with
+  a 403. `angular.json` here sets `serve.options.allowedHosts: ["all"]` to
+  bypass that check inside the practice/sandbox environment. Tracking a
+  proper platform fix in viiibin#1182 — when that ships, this override can
+  be dropped (or made dev-only).
 - Use Angular 21 idioms: standalone components, signals (`signal()`,
   `computed()`, `effect()`), the new control-flow syntax (`@if`, `@for`,
   `@switch`). The agent should default to these — no NgModules.
